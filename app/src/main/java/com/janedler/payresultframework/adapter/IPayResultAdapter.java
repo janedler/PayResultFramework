@@ -8,11 +8,11 @@ import android.support.v4.app.Fragment;
 
 public interface IPayResultAdapter {
 
-    Fragment buildFragment();
+    /*Fragment buildFragment();
 
     void sendTask();
 
-    void refresh();
+    void refresh();*/
 
 
 }

@@ -1,5 +1,7 @@
 package com.janedler.payresultframework.presenter;
 
+import android.support.v4.app.Fragment;
+
 import com.janedler.payresultframework.listener.PayResultModelListener;
 
 /**
@@ -8,6 +10,10 @@ import com.janedler.payresultframework.listener.PayResultModelListener;
 
 public interface IPayResultPresenter<T> {
 
-    void sendTask(PayResultModelListener<T> listener);
+    void sendTask();
+
+    Fragment buildFragment();
+
+    void refresh();
 
 }

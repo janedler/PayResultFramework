@@ -16,7 +16,7 @@ import com.janedler.payresultframework.presenter.impl.FundPayResultPresenter;
 
 public class FixedPayResultAdapter implements IPayResultAdapter {
 
-    private IPayResultFragment<Integer> mFragment;
+   /* private IPayResultFragment<Integer> mFragment;
     private IPayResultPresenter mPresenter;
 
     @Override
@@ -54,6 +54,6 @@ public class FixedPayResultAdapter implements IPayResultAdapter {
     @Override
     public void refresh() {
 //        mFragment
-    }
+    }*/
 
 }

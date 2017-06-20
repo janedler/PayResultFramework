@@ -17,7 +17,7 @@ public class MainActivity extends FragmentActivity{
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(PayResultActivity.Fragment_Type,PayResultActivity.FUND_TYPE);
+                bundle.putString(PayResultActivity.FRAGMENT_TYPE,PayResultActivity.FUND_TYPE);
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this,PayResultActivity.class);
                 intent.putExtras(bundle);
@@ -29,7 +29,7 @@ public class MainActivity extends FragmentActivity{
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(PayResultActivity.Fragment_Type,PayResultActivity.FIXED_TYPE);
+                bundle.putString(PayResultActivity.FRAGMENT_TYPE,PayResultActivity.FIXED_TYPE);
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this,PayResultActivity.class);
                 intent.putExtras(bundle);

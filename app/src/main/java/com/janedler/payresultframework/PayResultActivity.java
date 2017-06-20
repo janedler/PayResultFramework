@@ -6,18 +6,18 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 
-import com.janedler.payresultframework.adapter.IPayResultAdapter;
-import com.janedler.payresultframework.adapter.impl.FixedPayResultAdapter;
-import com.janedler.payresultframework.adapter.impl.FundPayResultAdapter;
+import com.janedler.payresultframework.presenter.IPayResultPresenter;
+import com.janedler.payresultframework.presenter.impl.FixedPayResultPresenter;
+import com.janedler.payresultframework.presenter.impl.FundPayResultPresenter;
 
 public class PayResultActivity extends FragmentActivity{
 
-    public static final String Fragment_Type = "Fragment_Type";
+    public static final String FRAGMENT_TYPE = "Fragment_Type";
     public static final String FUND_TYPE = "FUND_TYPE";
 
     public static final String FIXED_TYPE = "FIXED_TYPE";
 
-    private IPayResultAdapter mAdapter;
+    private IPayResultPresenter mPresenter;
 
     private boolean isFirst = true;
 
@@ -27,9 +27,9 @@ public class PayResultActivity extends FragmentActivity{
         setContentView(R.layout.pay_result_main);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        String type = bundle.getString(Fragment_Type);
-        mAdapter = getAdapter(type);
-        Fragment fragment = mAdapter.buildFragment();
+        String type = bundle.getString(FRAGMENT_TYPE);
+        mPresenter = getPresenter(type);
+        Fragment fragment = mPresenter.buildFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragment.setArguments(getIntent().getExtras());
         fragmentManager.beginTransaction().add(R.id.content_layout, fragment, "fragment").commitAllowingStateLoss();
@@ -39,20 +39,19 @@ public class PayResultActivity extends FragmentActivity{
     @Override
     protected void onResume() {
         super.onResume();
-        if (isFirst)mAdapter.sendTask();
+        if (isFirst)mPresenter.sendTask();
         isFirst = false;
-        mAdapter.refresh();
     }
 
 
-    private IPayResultAdapter getAdapter(String type){
+    private IPayResultPresenter getPresenter(String type){
 
         if (type.equals(FUND_TYPE)){
-            return new FundPayResultAdapter();
+            return new FundPayResultPresenter();
         }
 
         if (type.equals(FIXED_TYPE)){
-            return new FixedPayResultAdapter();
+            return new FixedPayResultPresenter();
         }
 
         return null;
